@@ -1,0 +1,10 @@
+[
+	{
+		"_id": "boxMenu",
+		"_type": "menu",
+		"_tier": "view",
+		"_behaviour": "PageMenuComponent",
+		"_template": "boxMenu",
+		"_tagName": "div"
+	}
+]

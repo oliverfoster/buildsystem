@@ -1,0 +1,10 @@
+[
+	{
+		"_id": "stripMenu",
+		"_type": "menu",
+		"_tier": "view",
+		"_behaviour": "PageMenuComponent",
+		"_template": "stripMenu",
+		"_tagName": "div"
+	}
+]

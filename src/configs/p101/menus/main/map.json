@@ -1,0 +1,24 @@
+[
+	{
+		"_id": "main-menu",
+		"_type": "menu",
+		"_tier": "map",
+		"_choice": [
+			{
+				"_where": {
+					"core.device.size" : [ "normal", "large", "extralarge" ]
+				},
+				"_data": "main-menu-desktop",
+				"_view": "boxMenu"
+			},
+			{
+				"_where": {
+					"core.device.size" : [ "small", "medium" ]
+				},
+				"_data": "main-menu-mobile",
+				"_view": "stripMenu"
+			}
+		],
+		"_dynamic": true
+	}
+]

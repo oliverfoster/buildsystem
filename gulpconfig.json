@@ -1,0 +1,202 @@
+{
+	"src": {
+		"root": "src",
+		"path": "src/configs/{{config}}",
+		"javascript": {
+			"core":[
+				"src/core/**/js/*.js",
+				"src/core/**/libraries/*.js",
+				"!src/core/**/assets/**/*.js"
+			],
+			"app": [
+				"src/app/app.js",
+				"src/app/**/js/*.js",
+				"src/app/**/libraries/*.js",
+				"!src/app/**/assets/**/*.js"
+			]
+		},
+		"json": [
+			"src/core/**/json/*.json",
+			"!src/core/**/assets/**/*.json",
+			"src/app/**/json/*.json",
+			"!src/app/**/assets/**/*.json",
+			"src/configs/{{config}}/**/*.json",
+			"!src/configs/{{config}}/**/assets/**/*.json"
+		],
+		"index": [
+			"src/index.html"
+		],
+		"less": [
+			"src/core/**/less/*.less",
+			"!src/core/**/assets/**/*.less",
+			"src/app/**/less/*.less",
+			"!src/app/**/assets/**/*.less",
+			"src/configs/{{config}}/**/*.less",
+			"!src/configs/{{config}}/**/assets/**/*.less"
+		],
+		"handlebars": [
+			"src/core/**/templates/*.hbs",
+			"!src/core/**/assets/**/*.hbs",
+			"src/app/**/templates/*.hbs",
+			"!src/app/**/assets/**/*.hbs",
+			"src/configs/{{config}}/**/*.hbs",
+			"!src/configs/{{config}}/**/assets/**/*.hbs"
+		],
+		"assets": [
+			"src/core/**/assets/**/*",
+			"src/core/**/assets/**",
+			"src/app/**/assets/**/*",
+			"src/app/**/assets/**",
+			"src/configs/{{config}}/**/assets/**/*",
+			"src/configs/{{config}}/**/assets/**"
+		]
+	},
+	"dest": {
+		"path": "build",
+		"sourcemappath": "../../",
+		"sourcemappathtruncateby": 0,
+		"json": {
+			"sourcemappath": "../../",
+			"sourcemapbase": "../",
+			"file": "js/data.js"
+		},
+		"javascript": {
+			"app": {
+				"sourcemappath": "../../",
+				"sourcemapbase": "../",
+				"file": "js/app.js"
+			},
+			"core": {
+				"sourcemappath": "../../",
+				"sourcemapbase": "../",
+				"file": "js/core.js"
+			}
+		},
+		"index": {
+			"file": "index.html"
+		},
+		"css": {
+			"sourcemappath": "../../",
+			"sourcemapbase": "../",
+			"file": "css/main.css"
+		},
+		"templates": {
+			"sourcemappath": "../../",
+			"sourcemapbase": "../",
+			"file": "js/templates.js"
+		},
+		"assets": {
+			"path": "",
+			"compare": [
+				"{{destination}}/**/*",
+				"!{{destination}}/js/**/*",
+				"!{{destination}}/css/**/*",
+				"!{{destination}}/js/**",
+				"!{{destination}}/css/**",
+				"!{{destination}}/js",
+				"!{{destination}}/css",
+				"!{{destination}}/index.html"
+			]
+		},
+		"loader": {
+			"file": "src/loader.js"
+		}
+	},
+	"clean": {
+		"paths": [
+			"js/**/*",
+			"css/**/*",
+			"index.html"
+		]
+	},
+	"map": {
+		
+	},
+	"shim": {
+		"app": {
+			"app": {
+				"deps": [
+				]
+			}
+		},
+		"core": {
+			"core": {
+				"exports": "core",
+				"deps": [
+					"require",
+					"jquery",
+					"handlebars",
+					"underscore",
+					"backbone",
+					"redefiner",
+		        	"json2",
+		        	"modernizr",
+		        	"stemo",
+		        	"standardize",
+		        	"compare",
+		        	"api",
+		        	"a11y",
+		        	"bowser",
+		        	"velocity",
+		        	"onscreen",
+		        	"scrollTo",
+		        	"imageReady"
+				]
+			}
+		}
+	},
+	"shimTo": {
+		"app/": {
+			"module": "app",
+			"exclude": [
+				"app/app"
+			]
+		},
+		"core/": {
+			"module": "core",
+			"exclude": [
+				"core/libraries/core",
+				"core/libraries/core-proxy"
+			]
+		}
+	},
+	"exclude": {
+		"app": [
+			"core",
+			"core/libraries/core-proxy"
+		]
+	},
+	"jslint": [
+		"app/"
+	],
+	"redirect": {
+
+	},
+	"paths": {
+		"app": {
+			"app": "app/app",
+			"core": "core/libraries/core-proxy"
+		},
+		"core": {
+			"core": "core/libraries/core",
+			"bowser": "core/libraries/bowser",
+			"require": "core/libraries/require",
+			"redefiner": "core/libraries/redefiner",
+	        "json2": "core/libraries/json2",
+	        "modernizr": "core/libraries/modernizr",
+	        "jquery": "core/libraries/jquery-2.1.1",
+	        "a11y": "core/libraries/jquery.a11y",
+	        "handlebars": "core/libraries/handlebars-v2.0.0",
+	        "underscore": "core/libraries/underscore",
+	        "backbone": "core/libraries/backbone",
+	        "stemo": "core/libraries/stemo",
+	        "standardize": "core/libraries/standardize",
+	        "velocity": "core/libraries/velocity",
+		    "imageReady": "core/libraries/imageReady",
+		    "onscreen": "core/libraries/onscreen",
+		    "scrollTo": "core/libraries/scrollTo",
+	        "compare": "core/libraries/compare",
+	        "api": "core/libraries/api"
+	    }
+    }
+}
