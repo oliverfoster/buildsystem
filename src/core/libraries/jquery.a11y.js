@@ -258,7 +258,7 @@
         $element.focusNoScroll();
     };
 
-    $(window)
+    $('body')
     .on("keyup", keyUp)
     .on("keydown", keyDown);
 
@@ -281,8 +281,8 @@
                 .on("focus", tabIndexElements, scrollToFocus)
 
                 if ($("#a11y-focusguard").length === 0) $('body').append($('<a id="a11y-focusguard" class="a11y-ignore a11y-ignore-focus" tabindex="0" role="button"></a>').addClass(touchClass))
-                if ($("#a11y-selected").length === 0) $('body').append($('<a id="a11y-selected" href="#" class="prevent-default a11y-ignore" tabindex="-1">'))
-                if ($("#a11y-focuser").length === 0) $('body').append($('<a id="a11y-focuser" href="#" class="prevent-default a11y-ignore" tabindex="-1">'))
+                if ($("#a11y-selected").length === 0) $('body').append($('<a id="a11y-selected" href="#" class="prevent-default a11y-ignore" tabindex="-1"></a>'))
+                if ($("#a11y-focuser").length === 0) $('body').append($('<a id="a11y-focuser" href="#" class="prevent-default a11y-ignore" tabindex="-1"></a>'))
             } else {
                 //REMOVES TAB GUARD, CLICK ON ACCESSIBLE TEXT AND SCROLL TO FOCUS EVENT HANDLERS
 
@@ -622,7 +622,7 @@
                 $item.removeAttr("role").removeAttr("aria-label").removeAttr("tabindex").removeClass("aria-hidden");
                 continue;
             }
-            var sudoElement = $("<a class='aria-label prevent-default' tabindex='0' role='region'>");
+            var sudoElement = $("<a class='aria-label prevent-default' tabindex='0' role='region'></a>");
             sudoElement.on("click", preventDefault);
             sudoElement.html($item.attr("aria-label"));
             $item.prepend(sudoElement);

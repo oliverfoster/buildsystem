@@ -9,14 +9,32 @@
 					"core.device.size" : [ "normal", "large", "extralarge" ]
 				},
 				"_data": "main-menu-desktop",
-				"_view": "boxMenu"
+				"_view": "boxMenu",
+				"_children": {
+					"pages": [
+
+					],
+					"menus": [
+						"submenu-1-boxMenu-preview",
+						"submenu-2-boxMenu-preview"
+					]
+				}
 			},
 			{
 				"_where": {
-					"core.device.size" : [ "small", "medium" ]
+					"core.device.size" : [ "extrasmall", "small" ]
 				},
 				"_data": "main-menu-mobile",
-				"_view": "stripMenu"
+				"_view": "stripMenu",
+				"_children": {
+					"pages": [
+
+					],
+					"menus": [
+						"submenu-1-stripMenu-preview",
+						"submenu-2-stripMenu-preview"
+					]
+				}
 			}
 		],
 		"_dynamic": true

@@ -6,5 +6,13 @@
 		"_behaviour": "PageMenuComponent",
 		"_template": "stripMenu",
 		"_tagName": "div"
+	},
+	{
+		"_id": "stripMenu-preview",
+		"_type": "menu",
+		"_tier": "view",
+		"_behaviour": "PageMenuComponent",
+		"_template": "stripMenu-preview",
+		"_tagName": "div"
 	}
 ]

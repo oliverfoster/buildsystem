@@ -9,7 +9,7 @@ define(function() {
 
 	var deviceSizes = [
 		{
-			"size": "small",
+			"size": "extrasmall",
 			"_where": {
 				"height": {
 					"_range": {
@@ -26,7 +26,7 @@ define(function() {
 			}
 		},
 		{
-			"size": "medium",
+			"size": "small",
 			"_where": {
 				"height": {
 					"_range": {
@@ -97,14 +97,14 @@ define(function() {
 
 	var deviceRatios = [
 		{
-			"ratio": "extralongscreen",
+			"ratio": "extralong",
 			"_range": {
 				"min": 0,
 				"max": 0.5624
 			}
 		},
 		{
-			"ratio": "longscreen",
+			"ratio": "long",
 			"_range": {
 				"min": 0.5625,
 				"max": 0.7799
@@ -125,14 +125,14 @@ define(function() {
 			}
 		},
 		{
-			"ratio": "widescreen",
+			"ratio": "wide",
 			"_range": {
 				"min": 1.3399,
 				"max": 1.6
 			}
 		},
 		{
-			"ratio": "extrawidescreen",
+			"ratio": "extrawide",
 			"_range": {
 				"min": 1.6999,
 				"max": Number.MAX_SAFE_INTEGER
@@ -162,11 +162,12 @@ define(function() {
 		device = _.extend(device, ratio);
 
 
-		if (window.core === undefined)window.core = {};
+		if (window.core === undefined) window.core = {};
 		if (window.core.device === undefined) window.core.device = {};
 		_.extend(window.core.device, device);
 
 	}
+	
 	$(window).resize(resize);
 	resize();
 

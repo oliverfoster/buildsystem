@@ -31,7 +31,7 @@
     waiter.Trigger.prototype._callback = null;
 
     waiter.Trigger.prototype.trigger = function() {
-        if (typeof callback === "function") this._callback();
+        if (typeof this._callback === "function") this._callback();
     };
 
     

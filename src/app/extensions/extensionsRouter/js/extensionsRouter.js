@@ -1,4 +1,8 @@
-define(['app/base/js/registry'], function() {
+define(['app/base/js/behaviour'], function() {
+
+	base.once("document:started", function() {
+
+	});
 
 	base.on("document:clear", function() {
 		
@@ -7,10 +11,6 @@ define(['app/base/js/registry'], function() {
 	base.on("document:new", function(view) {
 
 		
-	});
-
-	base.on("document:ready", function() {
-
 	});
 
 });

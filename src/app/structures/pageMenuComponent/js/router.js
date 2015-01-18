@@ -1,15 +1,24 @@
 define(['app/base/js/router'], function() {
 
 	var dynamicTrigger;
-	var currentId;
+	var currentMapId;
+	var currentMapChoiceId;
 
-	base.on("router:route:app", function() {
+	base.on("router:route:app", routeAppTo);
 
+	function routeAppTo() {
 		if (dynamicTrigger) dynamicTrigger.stopListening();
 
 		switch ( arguments[0] ) {
 		case "id":
 			var id = arguments[1];
+			var args = _.toArray(arguments);
+			routeById(id, args);
+		}
+	}
+
+	function routeById(id, args) {
+
 			var map = base.map._byId[id].json;
 
 			if (map === undefined ) {
@@ -29,65 +38,57 @@ define(['app/base/js/router'], function() {
 				break;
 			}
 
-
-			if (currentId == id) return;
-
-			var view, data, config, viewConstructor;
-
 			switch (map._type) {
 			case "menu":
 			case "page":
-				base.trigger("document:new");
-
-				if (map._choice) {
-
-					var choice = compare(window, map._choice);
-					map = _.extend(map, choice);
-
-					if (map._dynamic) {
-						var args = _.toArray(arguments);
-
-						if (dynamicTrigger === undefined) dynamicTrigger = new Waiter.Trigger(function() {
-							base.trigger.apply( base, ["router:route:app"].concat(args) );
-						});
-
-						for (var k in map._where) {
-							Stemo.listenTo( dynamicTrigger, window, k, "change", dynamicTrigger.trigger );
-						}
-					}
-
-				}
-
-				if (map._view && map._data) {
-				
-					view = base.view._byId[map._view];
-					data = base.data._byId[map._data];
-					config = base.config;
-
-					viewConstructor = base.registerGet("behaviour", view._behaviour);
-
-					var page = new viewConstructor({
-						model: new Stemo({
-							map: map,
-							view: view.json,
-							data: data.json,
-							config: config.json
-						})
-					});
-					base.$wrapper.append(page.$el);
-
-					
-
-				} else {
-
-					console.log("No _view and _data attribute found at: " + map._id);
-				}
-
+				routeToMenuOrPage(map, args);
 				break;
 			default:
 				return;
 			}
+	}
+
+	function routeToMenuOrPage(map, args) {
+		if (map._choice) {
+
+			for (var i = 0; i < map._choice.length; i++) {
+				map._choice[i]._choiceId = i;
+			}
+
+			var choice = compare(window, map._choice);
+			map = _.extend(map, choice);
+
+			if (map._dynamic) setupDynamicListener(map, args);
+
 		}
-	});
+
+		if (map._id == currentMapId && map._choiceId == currentMapChoiceId) return;
+		currentMapChoiceId = map._choiceId;
+		currentMapId = map._id;
+
+		base.trigger("router:router:app:id", map._id );
+
+		if (map._view && map._data) {
+		
+			base.trigger("document:new");
+			base.trigger("document:add", map);
+
+		} else {
+
+			console.log("No _view and _data attribute found at: " + map._id);
+		}
+
+	}
+
+	function setupDynamicListener(map, args) {
+
+		if (dynamicTrigger === undefined) dynamicTrigger = new Waiter.Trigger(function() {
+			base.trigger.apply( base, ["router:route:app"].concat(args) );
+		});
+
+		for (var k in map._where) {
+			Stemo.listenTo( dynamicTrigger, window, k, "change", dynamicTrigger.trigger );
+		}
+	}
 
 });

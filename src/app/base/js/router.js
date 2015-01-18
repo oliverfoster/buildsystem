@@ -1,6 +1,6 @@
 define(['./base'], function() {
 
-	base._ = base._ || {};
+	base.trigger("base:addTaskToReadyQueue", routerReady);
 
 	var Router = Backbone.Router.extend({
 		routes: {},
@@ -28,7 +28,7 @@ define(['./base'], function() {
 			}); 
 		},
 
-		load: function() {
+		start: function() {
 
 			var _id = base.config.start.map;
 
@@ -49,16 +49,14 @@ define(['./base'], function() {
 		}
 	});
 
+	var router = new Router();
+	router.listenToOnce(base, "router:start", router.start);
 
-	base.router = new Router();
-
-	base.trigger("base:readyQueue", function(task) {
+	function routerReady(task) {
 		
-		base.trigger("router:started", base.router);
+		base.trigger("router:ready", base.router);
 		task.ready();
 
-	});
-
-	base.router.listenToOnce(base.readyQueue, "ready", base.router.load);
+	}
 	
 });

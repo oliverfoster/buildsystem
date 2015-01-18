@@ -1,6 +1,7 @@
-define(['app/base/js/view'], function() {
+define(['app/base/js/behaviour'], function() {
 
-	var Default = base.registerGet("pattern","Default");
+	var Default = base.behaviour.get("Default");
+	
 	var SpecialBehaviour = Default.extend({ 
 		
 		_prepareDOM: function() {},
@@ -19,8 +20,7 @@ define(['app/base/js/view'], function() {
 
 	});
 
-	base.register("pattern", "SpecialBehaviour", SpecialBehaviour);
-	base.register("behaviour", "SpecialBehaviour", SpecialBehaviour);
+	base.behaviour.register("SpecialBehaviour", SpecialBehaviour);
 
 	return newView;
 

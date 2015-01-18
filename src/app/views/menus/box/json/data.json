@@ -6,5 +6,13 @@
 		"_behaviour": "PageMenuComponent",
 		"_template": "boxMenu",
 		"_tagName": "div"
+	},
+	{
+		"_id": "boxMenu-preview",
+		"_type": "other",
+		"_tier": "view",
+		"_behaviour": "PageMenuComponent",
+		"_template": "boxMenu-preview",
+		"_tagName": "div"
 	}
 ]

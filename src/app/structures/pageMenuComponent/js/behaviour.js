@@ -1,6 +1,7 @@
-define(['app/base/js/pattern'], function() {
+define(['app/base/js/behaviour'], function() {
 
-	var Default = base.registerGet("pattern","Default");
+	var Default = base.behaviour.get("Default");
+
 	var PageMenuComponent = Default.extend({ 
 		
 		_prepareDOM: function() {
@@ -22,18 +23,23 @@ define(['app/base/js/pattern'], function() {
 
 			var lastTagName = _.last( _.reject( _.pluck(from, "_tagName"), function(item) { return item === undefined; } ) );
 
+
+			var combinedEvents = {};
+			combinedEvents = _.extend({}, from[0]._events, from[1]._events, from[2]._events);
+
 			return {
 				_attributes: extendedAttributes,
 				_id: lastId,
-				_className: combinedClassNames,
-				_tagName: lastTagName
+				_classes: combinedClassNames,
+				_tagName: lastTagName,
+				_events: combinedEvents
 			};
 
 		},
 
-		//_construct: function() {},
+		_construct: function() {
 
-		//_events: function() {},
+		},
 
 		_preRender: function() {
 			this.data = this.model.json;
@@ -54,11 +60,13 @@ define(['app/base/js/pattern'], function() {
 			delete this.data;
 		},
 
-		//_remove: function() {}
+		_remove: function() {
+
+		}
 
 	});
 
-	base.register("behaviour", "PageMenuComponent", PageMenuComponent);
+	base.behaviour.register("PageMenuComponent", PageMenuComponent);
 
 	return PageMenuComponent;
 

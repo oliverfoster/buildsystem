@@ -24,6 +24,8 @@
 
 		var obj = args[0];
 
+		if (obj instanceof ModelArray || obj instanceof ModelObject) return obj;
+
 		var rtn;
 
 		if (isArray(obj)) rtn = new ModelArray(undefined, obj, args[1] || "global" );

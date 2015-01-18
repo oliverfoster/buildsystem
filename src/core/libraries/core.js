@@ -1,21 +1,37 @@
 var core = window.core || {};
+window.core = new Stemo(core, "core");;
 
-var stemo = new Stemo(core, "core");
-window.core = stemo;
-
-window.core.on("change:loaded.javascript change:loaded.templates", function(event) {
-	if (window.core.loaded.javascript && window.core.loaded.templates) window.core.ready = true;
-}).once("change:ready", function(event) {
-	console.log("CORE: ready")
-}).on("add:data.buffer", function(event){
-	console.log("CORE: data added");
-}).extend({
+var defaultCoreValues = {
 	loaded: {
 		javascript: false,
 		templates: false,
+		data: 0
 	},
 	data: {
-		buffer: []
+		buffer: [],
+		push: function(json) {
+	        core.loaded.data++;
+	        core.data.buffer.push(json);
+	    }
 	},
 	ready: false
-})
+};
+
+window.core
+.on("change:loaded.javascript change:loaded.templates", checkAllLoaded)
+.once("change:ready", coreReadyNotice)
+.on("add:data.buffer", dataAddedNotice)
+.extend(defaultCoreValues);
+
+
+function checkAllLoaded(event) {
+	if (window.core.loaded.javascript && window.core.loaded.templates) window.core.ready = true;
+}
+
+function coreReadyNotice(event) {
+	console.log("CORE: ready")
+}
+
+function dataAddedNotice(event) {
+	console.log("CORE: data added");
+}

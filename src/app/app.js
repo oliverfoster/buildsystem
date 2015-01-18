@@ -1,1 +1,3 @@
-console.log("APP: ready");
+core.on("change:ready", function() {
+	console.log("APP: ready");
+});

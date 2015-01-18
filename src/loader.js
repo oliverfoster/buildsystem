@@ -17,8 +17,7 @@ require.config({
         "imageReady": "core/libraries/imageReady",
         "onscreen": "core/libraries/onscreen",
         "scrollTo": "core/libraries/scrollTo",
-        "compare": "core/libraries/compare",
-        "api": "core/libraries/api"
+        "compare": "core/libraries/compare"
     },
     "map": {}
 });

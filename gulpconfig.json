@@ -134,7 +134,6 @@
 		        	"stemo",
 		        	"standardize",
 		        	"compare",
-		        	"api",
 		        	"a11y",
 		        	"bowser",
 		        	"velocity",
@@ -195,8 +194,7 @@
 		    "imageReady": "core/libraries/imageReady",
 		    "onscreen": "core/libraries/onscreen",
 		    "scrollTo": "core/libraries/scrollTo",
-	        "compare": "core/libraries/compare",
-	        "api": "core/libraries/api"
+	        "compare": "core/libraries/compare"
 	    }
     }
 }

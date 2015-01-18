@@ -848,7 +848,7 @@ function json(options) {
 		            })
 		            this.emit('end');
 		        })
-				.pipe(wrap("require(['api'], function() { api.data(<%= contents %>); })"))
+				.pipe(wrap("require(['core'], function() { core.data.push(<%= contents %>); })"))
 
 
 				.pipe(gulpif(isDebug, sourcemaps.write("./",{ includeContent: true, sourceMappingURLPrefix: sourcemapbase, sourceRoot: sourcemappath } ) ))

@@ -7,6 +7,24 @@ if (Number.prototype.roundTo === undefined && Number.roundTo === undefined) {
 	};
 }
 
+if (Array.prototype.indexOf === undefined) {
+	Array.prototype.indexOf = function(value) {
+		for (var i = 0; i < this.length; i++ ) {
+			if (this[i] === value) return i;
+		}
+		return -1;
+	}
+}
+
+if (String.prototype.indexOf === undefined) {
+	String.prototype.indexOf = function(value) {
+		for (var i = 0; i < this.length; i++ ) {
+			if (this[i] === value) return i;
+		}
+		return -1;
+	}
+}
+
 if (window.defer === undefined && window.delay === undefined) {
 	window.defer = function(func, that, args, callback) {
 		delay(func, that, 1, args, callback);
