@@ -1,0 +1,26 @@
+[
+	{
+		"_id": "introduction-page",
+		"_type": "document",
+		"_tier": "data",
+		"_progress": {
+			"_parent": "main-menu"
+		},
+		"_language": {
+			"en": {
+				"title": "Introduction Page"
+			}
+		}
+	},
+	{
+		"_id": "introduction-page-header",
+		"_type": "component",
+		"_tier": "data",
+		"_language": {
+			"en": {
+				"title": "This is the menu title",
+				"body": "This is the body for the menu"
+			}
+		}
+	}
+]

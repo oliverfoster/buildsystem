@@ -483,15 +483,15 @@ function javascript(options) {
 		var globalConfig = require('etc')().file( path.join(__dirname, 'config.json') ).toJSON();
 
 		var output = 'require.config(' + JSON.stringify( loaderConfig, null, 4) + ');\n'+
-		'require(["core","app"], function() {\n'+
-		'\tcore.loaded.javascript = true;\n'+
+		'require(["buildsystem","app"], function() {\n'+
+		'buildsystem.loaded.javascript = true;\n'+
 		'});\n';
 		
 		
 		fs.writeFileSync(loaderFile, output);
 
 		grabPaths = srcConfig.javascript[sectionName];
-		moduleName = sectionName;
+		moduleName = "buildsystem";
 	} else {
 		grabPaths = srcConfig.javascript[sectionName].concat([loaderFile]);
 		moduleName = "loader";
@@ -762,13 +762,13 @@ function handlebars(options){
 		        })
 			    .pipe(wrap('Handlebars.template(<%= contents %>)'))
 			    .pipe(declare({
-			      namespace: 'core.json.templates',
+			      namespace: 'buildsystem.json.templates',
 			      noRedeclare: true // Avoid duplicate declarations
 			    }))
 			    
 		    
 			    .pipe(concat( destConfig.templates.file ))
-			    .pipe(wrap('require(["core"],function(){\n<%= contents %>\ncore.sync("pull");\ncore.loaded.templates = true;\n});'))
+			    .pipe(wrap('require(["buildsystem"],function(){\n<%= contents %>\nbuildsystem.sync("pull");\nbuildsystem.loaded.templates = true;\n});'))
 			    
 			    .pipe(gulpif(isMinify, uglify()))
 			    
@@ -848,7 +848,7 @@ function json(options) {
 		            })
 		            this.emit('end');
 		        })
-				.pipe(wrap("require(['core'], function() { core.data.push(<%= contents %>); })"))
+				.pipe(wrap("require(['buildsystem'], function() { buildsystem.data.push(<%= contents %>); })"))
 
 
 				.pipe(gulpif(isDebug, sourcemaps.write("./",{ includeContent: true, sourceMappingURLPrefix: sourcemapbase, sourceRoot: sourcemappath } ) ))

@@ -1,0 +1,175 @@
+[
+	{
+		"_id": "foundation",
+		"_type": "class",
+		"_tier": "schema",
+		"description": "Foundation",
+		"_attributes": {
+			"_id": {
+				"_unique": true,
+				"_required": true,
+				"_type": "String"
+			},
+			"_tier": {
+				"_unique": false,
+				"_required": true,
+				"_type": "Enum[Tier]",
+				"_enum": {
+					"Tier": [
+						"schema",
+						"data",
+						"map",
+						"view"
+					]
+				}
+			},
+			"_classes": {
+				"_unique": false,
+				"_required": false,
+				"_type": "String"
+			},
+			"_tagName": {
+				"_unique": false,
+				"_required": false,
+				"_type": "String"
+			},
+			"_template": {
+				"_unique": false,
+				"_required": false,
+				"_type": "Enum[Behaviour]",
+				"_enum": {
+					"Behaviour": "document.templates"
+				}
+			},
+			"_attributes": {
+				"_unique": false,
+				"_required": false,
+				"_type": "Object[String] String"
+			},
+			"_events": {
+				"_unique": false,
+				"_required": false,
+				"_type": "Object[String] String"
+			}
+		}
+	},
+	{
+		"_id": "data",
+		"_type": "class",
+		"_tier": "schema",
+		"description": "Data",
+		"_extends": {
+			"foundation": {
+				"_attributes": {
+					"_tier": {
+						"_unique": false,
+						"_type": "String",
+						"_value": "data",
+						"_default": "data"
+					},
+					"_type": {
+						"_unique": false,
+						"_required": true,
+						"_type": "Enum[Type]",
+						"_enum": {
+							"Type": "base.data._types"
+						}
+					}
+				}
+			}
+		},
+		"_attributes": {
+			"_language": {
+				"_unique": false,
+				"_type": "Object[Enum[Language]] Object[String] String",
+				"_enum": {
+					"Language": "base.config.languages.available"
+				}
+			}
+		}
+	},
+	{
+		"_id": "map",
+		"_type": "class",
+		"_tier": "schema",
+		"description": "Map",
+		"_extends": {
+			"foundation": {
+				"_attributes": {
+					"_tier": {
+						"_unique": false,
+						"_type": "String",
+						"_value": "map",
+						"_default": "map"
+					},
+					"_type": {
+						"_unique": false,
+						"_required": true,
+						"_type": "Enum[Type]",
+						"_enum": {
+							"Type": "base.map._types"
+						}
+					}
+				}
+			}
+		},
+		"_attributes": {
+			"_dropzones": {
+				"_unique": false,
+				"_required": false,
+				"_type": "Object[String] Enum[Maps]",
+				"_enum": {
+					"Maps": "base.map._byId"
+				},
+				"_default": {}
+			}
+		}
+	},
+	{
+		"_id": "view",
+		"_type": "class",
+		"_tier": "schema",
+		"description": "View",
+		"_extends": {
+			"foundation": {
+				"_attributes": {
+					"_tier": {
+						"_unique": false,
+						"_type": "String",
+						"_value": "view",
+						"_default": "view"
+					},
+					"_type": {
+						"_unique": false,
+						"_required": true,
+						"_type": "Enum[Type]",
+						"_enum": {
+							"Type": "base.view._types"
+						}
+					}
+				}
+			}
+		},
+		"_attributes": {
+			"_behaviour": {
+				"_unique": false,
+				"_required": true,
+				"_type": "Enum[Behaviour]",
+				"_enum": {
+					"Behaviour": "document.behaviours"
+				}
+			},
+			"_language": {
+				"_unique": false,
+				"_type": "Object[String] String",
+				"_default": {}
+			},
+			"_tagName": {
+				"_default": "div"
+			},
+			"_template": {
+				"_default": "placeholder"
+			}
+		}
+	}
+]

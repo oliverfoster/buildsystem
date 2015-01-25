@@ -1,0 +1,52 @@
+[
+	{
+		"_id": "loading",
+		"_type": "loading",
+		"_tier": "map",
+		"_dataId": "loading",
+		"_viewId": "loading"
+	},
+	{
+		"_id": "main-menu",
+		"_type": "document",
+		"_tier": "map",
+		"_choice": [
+			{
+				"_where": {
+					"base.size" : [ "normal", "large", "extralarge" ]
+				},
+				"_dataId": "main-menu-desktop",
+				"_viewId": "boxMenu",
+				"_dropzones": {
+					"pages": [
+
+					],
+					"menus": [
+						"submenu-1-boxMenu-preview",
+						"submenu-2-boxMenu-preview"
+					]
+				}
+			},
+			{
+				"_where": {
+					"base.size" : [ "extrasmall", "small" ]
+				},
+				"_dataId": "main-menu-mobile",
+				"_viewId": "stripMenu",
+				"_dropzones": {
+					"pages": [
+
+					],
+					"menus": [
+						"submenu-1-stripMenu-preview",
+						"submenu-2-stripMenu-preview"
+					]
+				}
+			}
+		],
+		"_extensions": [
+			"main-menu-top-bar"
+		],
+		"_dynamic": true
+	}
+]

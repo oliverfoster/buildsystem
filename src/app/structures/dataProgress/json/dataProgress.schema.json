@@ -1,0 +1,25 @@
+[
+	{
+		"_id": "data",
+		"_type": "class",
+		"_tier": "schema",
+		"_attributes": {
+			"_progress": {
+				"_unique": false,
+				"_type": "Object[Enum[Attributes]] Enum[Attributes[]]",
+				"_enum": {
+					"Attributes": {
+						"_parent" : "base.data._byId",
+						"_wasInteracted": "boolean",
+						"_isInteractionComplete": "boolean"
+					}
+				},
+				"_default": {
+					"_wasInteracted": false,
+					"_isInteractionComplete": false,
+					"_parent": null
+				}
+			}
+		}
+	}
+]

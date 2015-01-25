@@ -1,0 +1,19 @@
+{
+	"start": {
+		"delay": 0,
+		"map": "main-menu",
+		"force": false
+	},
+	"languages": {
+		"available": {
+			"en": "English"
+		},
+		"default": "en"
+	},
+	"themes": {
+		"available": {
+			"vanilla": "Vanilla"
+		},
+		"default": "vanilla"
+	}
+}

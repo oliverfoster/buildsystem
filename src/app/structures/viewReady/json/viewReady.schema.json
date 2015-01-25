@@ -1,0 +1,28 @@
+[
+	{
+		"_id": "view",
+		"_type": "class",
+		"_tier": "schema",
+		"_attributes": {
+			"_ready": {
+				"_unique": false,
+				"_required": true,
+				"_type": "Object[Enum[Attributes]]  Enum[Attributes[]]",
+				"_enum": {
+					"Attributes": {
+						"_on" : "Enum[ReadyOn]",
+						"_complete": "Boolean"
+					},
+					"ReadyOn": [
+						"dropzonesPostRendered",
+						"ready"
+					]
+				},
+				"_default": {
+					"_on": "dropzonesPostRendered",
+					"_complete": false
+				}
+			}
+		}
+	}
+]

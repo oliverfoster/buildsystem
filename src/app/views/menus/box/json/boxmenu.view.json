@@ -1,0 +1,18 @@
+[
+	{
+		"_id": "boxMenu",
+		"_type": "document",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "boxMenu",
+		"_tagName": "div"
+	},
+	{
+		"_id": "boxMenu-preview",
+		"_type": "component",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "boxMenuPreview",
+		"_tagName": "div"
+	}
+]

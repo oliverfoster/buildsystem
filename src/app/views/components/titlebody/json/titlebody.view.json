@@ -1,0 +1,14 @@
+[
+	{
+		"_id": "titleBody",
+		"_type": "component",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "titleBody",
+		"_tagName": "div",
+		"_language": {
+			"title": "string",
+			"body": "string"
+		}
+	}
+]

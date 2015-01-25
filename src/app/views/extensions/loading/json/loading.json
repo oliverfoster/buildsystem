@@ -1,0 +1,14 @@
+[
+	{
+		"_id": "loading",
+		"_type": "loading",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "loading",
+		"_tagName": "div",
+		"_language": {
+			"title": "string",
+			"_icon": "icon"
+		}
+	}
+]

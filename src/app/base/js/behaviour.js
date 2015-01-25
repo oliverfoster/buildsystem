@@ -2,6 +2,13 @@ define(['./base'], function() {
 
 	base.trigger("base:addTaskToReadyQueue", behaviourReady);
 
+	function behaviourReady(task) {
+		
+		base.trigger("behaviour:ready", Default);		
+		task.ready();
+
+	}
+
 	var delegateEventSplitter = /^(\S+)\s*(.*)$/;
 
 	var Default = Backbone.View.extend({
@@ -41,7 +48,7 @@ define(['./base'], function() {
 			if (typeof this._contruct === "function") this._construct();
 
 
-
+			this.trigger("initialized");
 			base.trigger("behaviour:initialized", this);
 		},
 
@@ -52,7 +59,6 @@ define(['./base'], function() {
 
 		delegateEvents: function(events) {
 			if (!this._isRendered) return undefined;
-			console.log("delegate");
 			//fetch and combine available event data
 			/*
 				BACKBONE:
@@ -94,7 +100,6 @@ define(['./base'], function() {
 		},
 
 		undelegateEvents: function() {
-			console.log("undelegate");
 			this.$el.off('.delegateEvents' + this.cid);
       		return this;
 		},
@@ -102,11 +107,14 @@ define(['./base'], function() {
 		draw: function() {
 			this.undelegateEvents();
 			if (this._preRender) this._preRender();
+			this.trigger("preRendered");
 			base.trigger("behaviour:preRendered", this);
 			this.render();
+			this.trigger("rendered");
 			base.trigger("behaviour:rendered", this);
 			this._isRendered = true;
 			if (this._postRender) this._postRender();
+			this.trigger("postRendered");
 			base.trigger("behaviour:postRendered", this);
 		},
 
@@ -130,39 +138,13 @@ define(['./base'], function() {
 			this._isRendered = false;
 			Backbone.View.prototype.remove.apply(this, arguments);
 			if (this._remove) this._remove();
+			this.trigger("removed");
 			base.trigger("behaviour:removed", this);
 		}
 
 	});
 
-	base.behaviour = {
-		get: registerGet,
-		set: registerSet,
-		register: registerSet
-	};
-	var behaviour = base.behaviour._byId = {};
-	
-	function registerSet(name, value) {
-		behaviour[name] = value;
-		base.trigger("behaviour:registered", name, value);
-	}
-
-	function registerGet(name, callback) {
-		if (behaviour[name]) {
-			if (callback) callback(behaviour[name]);
-			return behaviour[name];
-		}
-		if (callback) callback(undefined);
-		return undefined;
-	}
-
-	base.behaviour.register("Default", Default);
-
-	function behaviourReady(task) {
-		
-		base.trigger("behaviour:ready", Default);		
-		task.ready();
-
-	}
+	document.behaviours = {};
+	document.behaviours.Default = Default;
 
 });

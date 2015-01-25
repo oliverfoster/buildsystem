@@ -3,45 +3,43 @@ define(['./base'], function() {
 	base.trigger("base:addTaskToReadyQueue", load);
 	$(window).one("unload", unload);
 
-	base.once("document:ended", clearDOM);
-
 	function load(task) {
 		
-		base.once("data:ready", function() {		
+		base.once("data:ready", startDocument);
 
+		function startDocument() {
 			setupTemplatesAsPartials();
 			setupDocumentWrapper();
 
-			defer(base.trigger, base, ["document:started"]);
-
 			task.ready();
 
-		});
+			defer(base.trigger, base, ["document:started"]);
+
+			function setupTemplatesAsPartials() {
+				var templates = document.templates;
+				for(var k in templates) {
+					Handlebars.registerPartial(k, templates[k]);
+				}
+			}
+
+			function setupDocumentWrapper() {
+				var templates = document.templates;
+				var wrapper = $(templates.wrapper());
+				$('body').append(wrapper);
+			}
+		}
 
 	}
 
 	function unload() {
+		clearDOM();
 		base.trigger("document:ended");
-	}
 
-	function setupTemplatesAsPartials() {
-		var templates = base.templates;
-		for(var k in templates) {
-			Handlebars.registerPartial(k, templates[k]);
+		function clearDOM() {
+			base.trigger("document:clear");
+			$("#wrapper").html("");
+			defer(base.trigger, base, ["document:cleared"]);
 		}
 	}
-
-	function setupDocumentWrapper() {
-		var templates = base.templates;
-		var wrapper = $(templates.wrapper());
-		$('body').append(wrapper);
-		base.$wrapper = wrapper;
-	}
-
-	function clearDOM() {
-		base.trigger("document:clear");
-		base.$wrapper.html("");
-		defer(base.trigger, base, ["document:cleared"]);
-	}	
 
 });

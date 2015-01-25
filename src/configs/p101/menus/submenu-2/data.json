@@ -1,9 +1,0 @@
-[
-	{
-		"_id": "submenu-2",
-		"_type": "menu",
-		"_tier": "data",
-		"title": "this is submenu-2",
-		"body": "sub menu 2 is awesome!"
-	}
-]

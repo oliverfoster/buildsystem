@@ -1,30 +1,47 @@
 define(function() {
 
-	var base = window.base = {};
-	_.extend(base, Backbone.Events);
-	base.readyQueue = (new Waiter.Queue());
+	var defaultBaseValues = {
+		size: "undefined",
+		ratio: "undefined"
+	};
+	var base = window.base = new Stemo(defaultBaseValues);
+	
+	var readyQueue = (new Backbone.Waiter.Queue());
+	readyQueue.once("ready", queueReady);
 
 	base.on("base:addTaskToReadyQueue", addTaskToReadyQueue);
-	base.readyQueue.once("ready", readyQueueReady);
-	base.listenTo(core.device, "change:size change:ratio", setCSSSize);
 
 	function addTaskToReadyQueue () {
-		return base.readyQueue.async.apply(this, arguments);
+		return readyQueue.async.apply(this, arguments);
 	}
 
-	function readyQueueReady() {
-		base.off("base:addTaskToReadyQueue");
-		defer( base.trigger, base, ["router:start"] );
+	function queueReady() {
+		readyQueue.destroy();
+		
+		clearupQueue();
+		startRouter();
+
+		function clearupQueue() {
+			base.off("base:addTaskToReadyQueue");
+			readyQueue = undefined;
+		}
+
+		function startRouter() {
+			$(document).ready(function() {
+				defer( base.trigger, base, ["router:start"] );
+			});
+		}
 	}
 
-	base.$html = $("html");
-	function setCSSSize() {
-		base.$html.removeClass("extrasmall small normal large extralarge");
-		base.$html.removeClass("extralong long portrait landscape wide extrawide");
-		base.$html.addClass(core.device.size);
-		base.$html.addClass(core.device.ratio);
+	
+	$(window).resize(fetchWindowSizeToEventSystem);
+
+	function fetchWindowSizeToEventSystem() {
+		window.base.size = window.size;
+		window.base.ratio = window.ratio;
 	}
-	setCSSSize();
+
+	fetchWindowSizeToEventSystem();
 
 	return base;
 });

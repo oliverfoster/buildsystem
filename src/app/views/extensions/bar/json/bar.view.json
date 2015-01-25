@@ -1,0 +1,38 @@
+[
+	{
+		"_id": "bar",
+		"_type": "bar",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "bar",
+		"_tagName": "div",
+		"_dropzones": {
+			"left": true,
+			"center": true,
+			"right": true
+		}
+	},
+	{
+		"_id": "barIcon",
+		"_type": "component",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "barIcon",
+		"_tagName": "div",
+		"_language": {
+			"_href": "url",
+			"_icon": "icon"
+		}
+	},
+	{
+		"_id": "barText",
+		"_type": "component",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "barText",
+		"_tagName": "div",
+		"_language": {
+			"text": "string"
+		}
+	}
+]

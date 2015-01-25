@@ -2,39 +2,69 @@ define(['./base'], function() {
 
 	base.trigger("base:addTaskToReadyQueue", routerReady);
 
+	function routerReady(task) {
+		
+		base.trigger("router:ready", base.router);
+		task.ready();
+
+	}
+
 	var Router = Backbone.Router.extend({
 		routes: {},
 		isStarted: false,
 
 		initialize: function() {
-			var name = ":type/:1";
-			for (var i = 0; i < 100; i++) {
-				name += "(/:" + (i+2) + ")";
+			var route = createRoute();
+			this.route(route, "default", _.bind(this.routeTo, this));
+
+			function createRoute() {
+				var name = ":type/:1";
+				for (var i = 0, l = 100; i < l; i++) {
+					name += "(/:" + (i+2) + ")";
+				}
+				return name;
 			}
-			this.route(name, "default", _.bind(this.routeTo, this));
+			
 		},
 
 		routeTo: function(type) {
+
 			var args = _.toArray(arguments);
-			type = args.shift();
-			for (var i = args.length - 1; i > -1; i--) {
-				if (args[i] === null) args.pop();
-				else break;
+			type = getRouteType(args);
+			args = trimNullParameters(args);
+
+			runRouteEvents(args); 
+
+			function getRouteType(args) {
+				return args.shift();
 			}
-			args.unshift("router:route:"+type);
-			defer( base.trigger, base, args , function() {
-				args[0] = "router:routed:"+type;
-				defer( base.trigger, base, args );  
-			}); 
+
+			function trimNullParameters(args) {
+				for (var i = args.length - 1, l = -1; i > l; i--) {
+					if (args[i] === null) args.pop();
+					else break;
+				}
+				return args;
+			}
+
+			function runRouteEvents(args) {
+				args.unshift("router:route:"+type);
+				defer( base.trigger, base, args , function() {
+					args[0] = "router:routed:"+type;
+					defer( base.trigger, base, args );  
+				}); 
+			}
+			
 		},
 
 		start: function() {
 
 			var _id = base.config.start.map;
+			var startDelayMilliseconds = base.config.start.delay || 0;
 
-			$(delay(function() {
+			delay(startNavigation, this, startDelayMilliseconds);
 
-				delete base.readyQueue;
+			function startNavigation() {
 
 				Backbone.history.start();
 
@@ -44,19 +74,12 @@ define(['./base'], function() {
 
 				}, this);
 
-			}, this, base.config.start.delay || 0 ));
+			}
 
 		}
 	});
 
 	var router = new Router();
 	router.listenToOnce(base, "router:start", router.start);
-
-	function routerReady(task) {
-		
-		base.trigger("router:ready", base.router);
-		task.ready();
-
-	}
 	
 });

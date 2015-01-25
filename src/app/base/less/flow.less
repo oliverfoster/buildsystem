@@ -1,0 +1,77 @@
+.flow-inline() {
+	display: inline-block;
+}
+
+.flow-parent() {
+	position:relative;
+}
+
+.flow-top() {
+	position: absolute;
+	top: 0px;
+}
+
+
+.flow-right() {
+	position: absolute;
+	right: 0px;
+}
+
+.flow-topright() {
+	.flow-top;
+	.flow-right;
+}
+
+.flow-bottom() {
+	position: absolute;
+	bottom: 0px;
+}
+
+.flow-bottomright() {
+	.flow-bottom;
+	.flow-right;
+}
+
+.flow-left() {
+	position: absolute;
+	left: 0px;
+}
+
+.flow-topleft() {
+	.flow-top;
+	.flow-left;
+}
+
+.flow-bottomleft() {
+	.flow-bottom;
+	.flow-left;
+}
+
+.flow-center() {
+	position: absolute;
+	left: 0px;
+	display: table;
+	width: 100%;
+	> * {
+		display:table-cell;
+		text-align: center;
+
+		
+	}
+}
+
+.flow-middle() {
+	position: absolute;
+	top: 0px;
+	display: table;
+	height: 100%;
+	> * {
+		display:table-cell;
+		vertical-align: middle;
+
+		
+	}
+}
+
+
+

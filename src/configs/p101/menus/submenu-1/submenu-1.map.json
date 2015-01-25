@@ -1,0 +1,16 @@
+[
+	{
+		"_id": "submenu-1-boxMenu-preview",
+		"_type": "component",
+		"_tier": "map",
+		"_dataId": "submenu-1",
+		"_viewId": "boxMenu-preview"
+	},
+	{
+		"_id": "submenu-1-stripMenu-preview",
+		"_type": "component",
+		"_tier": "map",
+		"_dataId": "submenu-1",
+		"_viewId": "stripMenu-preview"
+	}
+]

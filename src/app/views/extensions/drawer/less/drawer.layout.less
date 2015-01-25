@@ -1,0 +1,51 @@
+.layout {
+
+	.drawer {
+		.flow-parent;
+	}
+
+}
+
+.long, .portrait, .landscape, .wide, .extrawide {
+
+	.layout {
+
+		.drawer {
+			.dimension-height-max;
+		}
+
+		.drawer.left {
+			.flow-topleft;
+			position: fixed;
+		}
+
+		.drawer.right {
+			.flow-topright;
+			position: fixed;
+		}
+
+	}
+
+}
+
+.extralong {
+
+	.layout {
+
+		.drawer {
+			.dimension-width-max;
+		}
+
+		.drawer.left {
+			.flow-topleft;
+			position: fixed;
+		}
+
+		.drawer.right {
+			.flow-bottomleft;
+			position: fixed;
+		}
+
+	}
+
+}

@@ -9,7 +9,7 @@ if (Number.prototype.roundTo === undefined && Number.roundTo === undefined) {
 
 if (Array.prototype.indexOf === undefined) {
 	Array.prototype.indexOf = function(value) {
-		for (var i = 0; i < this.length; i++ ) {
+		for (var i = 0, l = this.length; i < l; i++ ) {
 			if (this[i] === value) return i;
 		}
 		return -1;
@@ -18,7 +18,7 @@ if (Array.prototype.indexOf === undefined) {
 
 if (String.prototype.indexOf === undefined) {
 	String.prototype.indexOf = function(value) {
-		for (var i = 0; i < this.length; i++ ) {
+		for (var i = 0, l = this.length; i < l; i++ ) {
 			if (this[i] === value) return i;
 		}
 		return -1;

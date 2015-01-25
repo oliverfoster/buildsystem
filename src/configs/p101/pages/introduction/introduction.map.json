@@ -1,0 +1,23 @@
+[
+	{
+		"_id": "introduction-page",
+		"_type": "document",
+		"_tier": "map",
+		"_dataId": "introduction-page",
+		"_viewId": "simplePage",
+		"_dropzones": {
+			"headers": [
+				{
+					"_id": "introduction-page-header",
+					"_type": "component",
+					"_tier": "map",
+					"_dataId": "introduction-page-header",
+					"_viewId": "titleBody"
+				}
+			]
+		},
+		"_extensions": [
+			"main-menu-top-bar"
+		]
+	}
+]

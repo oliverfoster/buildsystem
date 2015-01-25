@@ -1,0 +1,18 @@
+[
+	{
+		"_id": "stripMenu",
+		"_type": "document",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "stripMenu",
+		"_tagName": "div"
+	},
+	{
+		"_id": "stripMenu-preview",
+		"_type": "component",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "stripMenuPreview",
+		"_tagName": "div"
+	}
+]

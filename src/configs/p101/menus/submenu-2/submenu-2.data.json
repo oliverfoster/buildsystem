@@ -1,0 +1,16 @@
+[
+	{
+		"_id": "submenu-2",
+		"_type": "document",
+		"_tier": "data",
+		"_progress": {
+			"_parent": "main-menu"
+		},
+		"_language": {
+			"en": {
+				"title": "this is submenu-2",
+				"body": "sub menu 2 is awesome!"
+			}
+		}
+	}
+]

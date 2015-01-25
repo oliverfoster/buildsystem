@@ -1,7 +1,0 @@
-{
-	"start": {
-		"delay": 10,
-		"map": "main-menu",
-		"force": true
-	}
-}

@@ -1,0 +1,5 @@
+viewReady {
+
+	> ! document:ready()
+
+}

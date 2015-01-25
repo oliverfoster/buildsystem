@@ -1,0 +1,36 @@
+[
+	{
+		"_id": "topbarBackButton",
+		"_type": "component",
+		"_tier": "data",
+		"_language": {
+			"en": {
+				"text": "Back",
+				"_icon": "fa fa-angle-left",
+				"_href": "http://www.google.com"
+			}
+		}
+	},
+	{
+		"_id": "topbarDrawerButton",
+		"_type": "component",
+		"_tier": "data",
+		"_language": {
+			"en": {
+				"text": "Drawer",
+				"_icon": "fa fa-list",
+				"_href": "http://www.google.com"
+			}
+		}
+	},
+	{
+		"_id": "topbarTitle",
+		"_type": "component",
+		"_tier": "data",
+		"_language": {
+			"en": {
+				"text": "{{document.title}}"
+			}
+		}
+	}
+]

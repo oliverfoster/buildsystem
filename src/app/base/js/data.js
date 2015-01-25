@@ -1,19 +1,36 @@
 define(['./base'], function() {
 
-	base.trigger('base:addTaskToReadyQueue', coreDataProcessor);
+	base.trigger('base:addTaskToReadyQueue', buildsystemDataProcessor);
 
-	function coreDataProcessor(task) {
-		core.once("add:data.buffer", _.defer(function() {
-			convertCoreDataToBaseData(task);
+	function buildsystemDataProcessor(task) {
+		buildsystem.once("add:data.buffer", defer(function() {
+			convertBuildSystemDataToBaseData(task);
 		}));
 	}
 
-	function convertCoreDataToBaseData(task) {
+	function convertBuildSystemDataToBaseData(task) {
 		
-		var data = core.data.buffer.pop();
-		base.config = new Stemo(data.object);
-		base.data = new Stemo(data.array);
-		base.templates = core.templates;
+		var data = buildsystem.data.buffer.pop();
+
+		var config = data.object.json;
+
+		var configDefaults = {
+			languages: {
+				default: "en",
+				current: config.languages.default || "en"
+			},
+			themes: {
+				default: "vanilla",
+				current: config.themes.default || "vanilla"
+			}
+		};
+
+		base.config = $.extend(true, configDefaults, config);
+		base.data = data.array;
+		
+		document.templates = buildsystem.templates.json;
+
+		base.sync("push");
 
 		base.trigger("data:ready");
 		task.ready();

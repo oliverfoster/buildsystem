@@ -20,8 +20,6 @@ base {
 	> ~ document:cleared()
 	> ! document:ended()
 
-	> ! behaviour:registered(type, name, viewInstanciator)
-
 	> ! behaviour:initialized(view);
 	> ! behaviour:preRendered(view);
 	> ! behaviour:rendered(view);
@@ -30,3 +28,11 @@ base {
 	
 }
 
+
+Default behaviour {
+	> ! initialized()
+	> ! preRendered()
+	> ! rendered()
+	> ! postRendered()
+	> ! removed()
+}

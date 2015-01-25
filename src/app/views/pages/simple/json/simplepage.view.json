@@ -1,0 +1,15 @@
+[
+	{
+		"_id": "simplePage",
+		"_type": "document",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "simplePage",
+		"_tagName": "div",
+		"_dropzones": {
+			"headers": true,
+			"contents": true,
+			"footers": true
+		}
+	}
+]
