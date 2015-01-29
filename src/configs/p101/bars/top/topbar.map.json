@@ -12,7 +12,8 @@
 					"_type": "component",
 					"_tier": "map",
 					"_dataId": "topbarBackButton",
-					"_viewId": "barIcon"
+					"_viewId": "barIcon",
+					"_eventName": "backButton"
 				}
 			],
 			"center": [
@@ -30,7 +31,8 @@
 					"_type": "component",
 					"_tier": "map",
 					"_dataId": "topbarDrawerButton",
-					"_viewId": "barIcon"
+					"_viewId": "barIcon",
+					"_eventName": "drawerButton"
 				}
 			]
 		}

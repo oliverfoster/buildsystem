@@ -4,7 +4,11 @@
 		"_type": "loading",
 		"_tier": "map",
 		"_dataId": "loading",
-		"_viewId": "loading"
+		"_viewId": "loading",
+		"_animation": [
+			{ "type": { "translateX": "-100%", "translateY": "-100%", "scaleX": "-100%", "scaleY": "-100%" }, "options": { "delay": 1000, "duration": 750, "easing": "easeInSine" } },
+			{ "type": { "opacity": 0 }, "options": { "delay": 1250, "duration": 250, "queue": false, "easing": "easeInSine" } }
+		]
 	},
 	{
 		"_id": "main-menu",

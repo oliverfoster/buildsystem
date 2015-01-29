@@ -14,6 +14,7 @@ var etc = require('etc'),
 	collate = require('gulp-collate'),
 	deleted = require('gulp-deleted'),
 	amdOptimize = require('amd-optimize'),
+	gulpAmdOptimizer = require('gulp-amd-optimizer'),
 	gutil = require('gulp-util'),
 	tap = require('gulp-tap'),
 	gwatch = require('gulp-watch'),//gulp.watch,
@@ -416,13 +417,7 @@ gulp.task('app-handlebars-dev-watch', ['app-handlebars-dev'], function() {
 		gulp.start(['app-handlebars-dev'], function() {
 			if (browserSyncOn) reload();
 		});
-	}); // watch the same files in our scripts task
-  /*watcher.on('change', function (event) {
-    if (event.type === 'deleted') { // if a file is deleted, forget about it
-      delete cache.caches['apphandlebars'][event.path];
-      remember.forget('apphandlebars', event.path);
-    }
-  });*/
+	}); 
 });
 gulp.task('app-handlebars-dev', function() {
 	return handlebars({
@@ -539,12 +534,9 @@ function javascript(options) {
 		}))
 
 		.pipe(amdOptimize(moduleName, {
-			findNestedDependencies: true,
 			baseUrl: srcConfig.root,
 			paths: conf.paths[sectionName],
 			shim: conf.shim[sectionName],
-			waitSeconds: 0,
-			wrapShim: true,
 			exclude: conf.exclude[sectionName],
 			loader : amdOptimize.loader(
 			    // Used for turning a moduleName into a filepath glob.

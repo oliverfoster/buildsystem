@@ -30,10 +30,12 @@ define(['app/base/js/behaviour'], function() {
 
 			this.template = lastTemplate;
 
-			var combinedEvents = {};
+			var combinedEvents = _.extend({}, defaultEvents);
 			for (var i = 0, l = from.length; i < l; i++) {
 				if (from[i]._events) combinedEvents = _.extend(combinedEvents, from[i]._events);	
 			}
+
+
 
 			return {
 				_attributes: extendedAttributes,
@@ -72,7 +74,14 @@ define(['app/base/js/behaviour'], function() {
 
 		_remove: function() {
 
+		},
+
+		_triggerEvent: function(event) {
+			event.preventDefault();
+			var eventName = $(event.currentTarget).attr("data-eventname");
+			console.log(eventName);
 		}
+
 
 	});
 
@@ -88,6 +97,10 @@ define(['app/base/js/behaviour'], function() {
 		}
 		
 	}
+
+	var defaultEvents = {
+		"click [data-eventname]": "_triggerEvent"
+	};
 
 	document.behaviours.DataMapView = DataMapView;
 

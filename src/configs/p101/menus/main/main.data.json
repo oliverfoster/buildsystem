@@ -3,10 +3,6 @@
 		"_id": "loading",
 		"_type": "loading",
 		"_tier": "data",
-		"_animation": [
-			{ "type": { "translateX": "-100%", "translateY": "-100%", "scaleX": "-100%", "scaleY": "-100%" }, "options": { "delay": 2000, "duration": 750, "easing": "easeInSine" } },
-			{ "type": { "opacity": 0 }, "options": { "delay": 2250, "duration": 250, "queue": false, "easing": "easeInSine" } }
-		],
 		"_language": {
 			"en": {
 				"_icon": "fa fa-refresh fa-spin fa-stack-2x",

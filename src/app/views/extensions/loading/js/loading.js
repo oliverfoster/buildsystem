@@ -4,14 +4,11 @@ define(['app/structures/dataMapView/js/datamapview.document'], function() {
 
 	var $body = $("body");
 	var loadingMap;
-	var loadingData;
 
 	function setupLoading() {
 		loadingMap = base.map._byId.loading;
-		loadingData = base.data._byId.loading;
-		if (loadingMap === undefined || loadingData === undefined) return;
+		if (loadingMap === undefined) return;
 		loadingMap = loadingMap.json;
-		loadingData = loadingData.json;
 
 		base.on("document:new", showLoading);
 		base.on("document:ready", hideLoading);
@@ -22,8 +19,8 @@ define(['app/structures/dataMapView/js/datamapview.document'], function() {
 	}
 
 	function hideLoading() {
-		if (loadingData._animation) {
-			var animation = loadingData._animation;
+		if (loadingMap._animation) {
+			var animation = loadingMap._animation;
 			if (animation instanceof Array) {
 				for (var i = 0, l = animation.length; i < l; i++) {
 					$("#loading").velocity(animation[i].type, animation[i].options);

@@ -53,6 +53,7 @@
     "gulp-deleted": "0.0.1"
   },
   "dependencies": {
+    "gulp-amd-optimizer": "^0.3.2",
     "gulp-htmlhint": "0.0.9",
     "gulp-htmltidy": "^0.1.0",
     "gulp-json-lint": "0.0.1",
