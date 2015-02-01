@@ -19,7 +19,8 @@ require.config({
         "underscore": "core/libraries/underscore",
         "compare": "core/libraries/underscore.compare",
         "size": "core/libraries/underscore.compare.window.size",
-        "velocity": "core/libraries/velocity"
+        "velocity": "core/libraries/velocity",
+        "draggabilly": "core/libraries/draggabilly"
     },
     "map": {}
 });

@@ -1,9 +1,9 @@
-define(['app/structures/dataMapView/js/datamapview.document'], function() {
+define(['app/base/js/base', 'app/structures/dataMapView/js/datamapview.doc'], function(base, doc) {
 
 	base.on("document:new", newDocument);
 	base.on("document:adding", setupReadyListener);
-	base.on("router:postRoute:app:id", checkReady);
-
+	base.on("router:routed:app:id", checkReady);
+	
 	var waitingForViews = 0;
 
 	function newDocument() {

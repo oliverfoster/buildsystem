@@ -1,8 +1,8 @@
 dataMapView {
 	
-	> ! router:preRoute:app:id(mapID);
+	> ! router:routing:app:id(mapID);
 	> ! router:route:app:id(mapID);	
-	> ! router:postRouter:app:id(mapID);
+	> ! router:routed:app:id(mapID);
 
 	> ! document:title(title)
 	< ! document:add(map)
@@ -11,12 +11,14 @@ dataMapView {
 	< ! document:remove(view)
 	> ! document:removed(view);
 
-	> ! behaviour:dropzonesPreRender(view)
-	> ! behaviour:dropzonesPostRender(view)
+	> ! behaviour:dropzones:rendering(view)
+	> ! behaviour:dropzones:rendered(view)
+
+	> ! data:processed();
 
 }
 
 DataMapView behaviour {
-	> ! dropzonesPreRender
-	> ! dropzonesPostRender
+	> ! dropzones:rendering
+	> ! dropzones:rendered
 }

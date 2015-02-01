@@ -1,4 +1,4 @@
-define(['./base'], function() {
+define(['./base', './doc'], function(base, doc) {
 
 	base.trigger('base:addTaskToReadyQueue', buildsystemDataProcessor);
 
@@ -28,7 +28,7 @@ define(['./base'], function() {
 		base.config = $.extend(true, configDefaults, config);
 		base.data = data.array;
 		
-		document.templates = buildsystem.templates.json;
+		doc.templates = buildsystem.templates.json;
 
 		base.sync("push");
 

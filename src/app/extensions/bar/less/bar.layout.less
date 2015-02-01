@@ -1,0 +1,87 @@
+.layout {
+
+	.bar {
+		.flow-parent;
+	}
+
+}
+
+.long, .portrait, .landscape, .wide, .extrawide {
+
+	.layout {
+
+		.bar {
+			.dimension-width-max;
+		}
+
+		.bar div {
+			.flow-inline;
+
+			&#left {
+				.flow-topleft;
+				max-width: 33%;
+			}
+			&#center {
+				.flow-center;
+			}
+			&#right {
+				.flow-topright;
+				max-width: 33%;
+			}
+		}
+
+		.bar.top {
+			.flow-topleft;
+			position: absolute;
+		}
+
+		.bar.bottom {
+			.flow-bottomleft;
+			position: absolute;
+		}
+
+
+
+	}
+
+}
+
+.extralong {
+
+	.layout {
+
+		.bar {
+			.dimension-height-max;
+		}
+
+		.bar div {
+			.flow-inline;
+
+			&#left {
+				.flow-topleft;
+				max-height: 33%;
+			}
+			&#center {
+				.flow-middle;				
+			}
+			&#right {
+				.flow-bottomleft;
+				max-height: 33%;
+			}
+		}
+
+		.bar.top {
+			.flow-topleft;
+			position: absolute;
+		}
+
+		.bar.bottom {
+			.flow-topright;
+			position: absolute;
+		}
+
+
+
+	}
+
+}

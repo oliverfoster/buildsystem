@@ -1,7 +1,8 @@
-define(['app/base/js/behaviour'], function() {
+define(['app/base/js/base', 'app/base/js/doc', 'app/base/js/behaviour'], function(base, doc) {
 
-	var Default = document.behaviours.Default;
+	var Default = doc.behaviours.Default;
 
+	var triggerParserRepl = /\'/g;
 	var DataMapView = Default.extend({ 
 		
 		_prepareDOM: function() {
@@ -59,13 +60,13 @@ define(['app/base/js/behaviour'], function() {
 
 		_render: function() {
 			if (this.data.view && this.data.view._id) {
-				if (document.templates[this.template]) {
-					this.$el.html(document.templates[this.template](this.data));
+				if (doc.templates[this.template]) {
+					this.$el.html(doc.templates[this.template](this.data));
 					return;
 				} 
 			}
 
-			this.$el.html(document.templates.placeholder(this.data));
+			this.$el.html(doc.templates.placeholder(this.data));
 		},
 
 		_postRender: function() {
@@ -78,8 +79,42 @@ define(['app/base/js/behaviour'], function() {
 
 		_triggerEvent: function(event) {
 			event.preventDefault();
-			var eventName = $(event.currentTarget).attr("data-eventname");
-			console.log(eventName);
+			event.stopPropagation();
+			
+			var events = $(event.currentTarget).attr("data-triggers");
+			if (!events || events === "") return;
+
+			events = events.replace(triggerParserRepl, '"');
+			try {
+				events = JSON.parse(events);
+			} catch(e) {
+				return;
+			}
+
+			for (var i = 0, l = events.length; i < l; i++) {
+				var triggerItem = events[i];
+				if (triggerItem.on) {
+					var on = Stemo.get(this, triggerItem.on);
+					if (!on) on = Stemo.get(window, triggerItem.on);
+					on.trigger(triggerItem.name, event);
+				} else {
+					this.trigger(triggerItem.name, event);
+				}
+			}
+			
+		},
+
+		_animate: function() {
+			if (this.map._animation) {
+				var animation = this.map._animation;
+				if (animation instanceof Array) {
+					for (var i = 0, l = animation.length; i < l; i++) {
+						this.$el.velocity(animation[i].type, animation[i].options);
+					}
+				} else {
+					this.$el.velocity(animation.type, animation.options);
+				}
+			}
 		}
 
 
@@ -99,10 +134,10 @@ define(['app/base/js/behaviour'], function() {
 	}
 
 	var defaultEvents = {
-		"click [data-eventname]": "_triggerEvent"
+		"click [data-triggers]": "_triggerEvent"
 	};
 
-	document.behaviours.DataMapView = DataMapView;
+	doc.behaviours.DataMapView = DataMapView;
 
 	return DataMapView;
 

@@ -1,13 +1,13 @@
 [
 	{
 		"_id": "loading",
-		"_type": "loading",
+		"_type": "addin",
 		"_tier": "map",
 		"_dataId": "loading",
 		"_viewId": "loading",
 		"_animation": [
-			{ "type": { "translateX": "-100%", "translateY": "-100%", "scaleX": "-100%", "scaleY": "-100%" }, "options": { "delay": 1000, "duration": 750, "easing": "easeInSine" } },
-			{ "type": { "opacity": 0 }, "options": { "delay": 1250, "duration": 250, "queue": false, "easing": "easeInSine" } }
+			{ "type": { "translateX": "-100%", "translateY": "-100%", "scaleX": "-100%", "scaleY": "-100%" }, "options": { "delay": 750, "duration": 750, "easing": "easeInSine" } },
+			{ "type": { "opacity": 0 }, "options": { "delay": 1000, "duration": 250, "queue": false, "easing": "easeInSine" } }
 		]
 	},
 	{
@@ -17,23 +17,8 @@
 		"_choice": [
 			{
 				"_where": {
-					"base.size" : [ "normal", "large", "extralarge" ]
-				},
-				"_dataId": "main-menu-desktop",
-				"_viewId": "boxMenu",
-				"_dropzones": {
-					"pages": [
-
-					],
-					"menus": [
-						"submenu-1-boxMenu-preview",
-						"submenu-2-boxMenu-preview"
-					]
-				}
-			},
-			{
-				"_where": {
-					"base.size" : [ "extrasmall", "small" ]
+					"base.size" : [ "extrasmall", "small" ],
+					"base.ratio" : [ "extralong", "long", "portrait" ]
 				},
 				"_dataId": "main-menu-mobile",
 				"_viewId": "stripMenu",
@@ -46,11 +31,28 @@
 						"submenu-2-stripMenu-preview"
 					]
 				}
+			},
+			{
+				"_where": {
+					"base.size" : [ "extrasmall", "small", "normal", "large", "extralarge" ],
+					"base.ratio" : [ "extralong", "long", "portrait", "landscape", "wide", "extrawide" ]
+				},
+				"_dataId": "main-menu-desktop",
+				"_viewId": "boxMenu",
+				"_dropzones": {
+					"pages": [
+
+					],
+					"menus": [
+						"submenu-1-boxMenu-preview",
+						"submenu-2-boxMenu-preview"
+					]
+				}
 			}
 		],
-		"_extensions": [
-			"main-menu-top-bar"
-		],
+		"_extensions": {
+			"main-menu-top-bar": true
+		},
 		"_dynamic": true
 	}
 ]

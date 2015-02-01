@@ -1,96 +1,39 @@
 define(function() {
 
-	var windowDimesions = {
-			height: $(window).height(),
-			width: $(window).width()
-		};
-
-	var windowRatio = Math.floor(windowDimesions.width/windowDimesions.height*100)/100;
-
-	var deviceSizes = [
+	var deviceAreas = [
 		{
 			"size": "extrasmall",
-			"_where": {
-				"height": {
-					"_range": {
-						"min": 320 / windowRatio,
-						"max": 520 / windowRatio
-					}
-				},
-				"width": {
-					"_range": {
-						"min": 320,
-						"max": 520
-					}
-				}
+			"_range": {
+				"min": 0,
+				"max": Math.pow(520, 2)
 			}
 		},
 		{
 			"size": "small",
-			"_where": {
-				"height": {
-					"_range": {
-						"min": 520 / windowRatio,
-						"max": 760 / windowRatio
-					}
-				},
-				"width": {
-					"_range": {
-						"min": 520,
-						"max": 760
-					}
-				}
+			"_range": {
+				"min": Math.pow(520, 2),
+				"max": Math.pow(760, 2)
 			}
 		},
 		{
 			"size": "normal",
-			"_where": {
-				"height": {
-					"_range": {
-						"min": 760 / windowRatio,
-						"max": 1024 / windowRatio
-					}
-				},
-				"width": {
-					"_range": {
-						"min": 760,
-						"max": 1024
-					}
-				}
+			"_range": {
+				"min": Math.pow(760, 2),
+				"max": Math.pow(1024, 2)
 			}
 		},
 		{
 			"size": "large",
-			"_where": {
-				"height": {
-					"_range": {
-						"min": 1024 / windowRatio,
-						"max": 1600 / windowRatio
-					}
-				},
-				"width": {
-					"_range": {
-						"min": 1024,
-						"max": 1600
-					}
-				}
+			"_range": {
+				"min": Math.pow(1024, 2),
+				"max": Math.pow(1600, 2)
 			}
 		},
 		{
 			"size": "extralarge",
-			"_where": {
-				"height": {
-					"_range": {
-						"min": 1600 / windowRatio,
-						"max": Number.MAX_SAFE_INTEGER
-					}
-				},
-				"width": {
-					"_range": {
-						"min": 1600,
-						"max": Number.MAX_SAFE_INTEGER
-					}
-				}
+			"_range": {
+				"min": Math.pow(1600, 2),
+				"max": Number.MAX_SAFE_INTEGER
 			}
 		}
 	];
@@ -113,21 +56,21 @@ define(function() {
 		{
 			"ratio": "portrait",
 			"_range": {
-				"min": 0.78,
+				"min": 0.7800,
 				"max": 0.9999
 			}
 		},
 		{
 			"ratio": "landscape",
 			"_range": {
-				"min": 1,
-				"max": 1.3398
+				"min": 1.0000,
+				"max": 1.3399
 			}
 		},
 		{
 			"ratio": "wide",
 			"_range": {
-				"min": 1.3399,
+				"min": 1.3400,
 				"max": 1.6998
 			}
 		},
@@ -141,32 +84,21 @@ define(function() {
 	];
 
 
-	var $html = $("html");
-
 	function resize() {
-		windowDimesions = {
+		var windowDimesions = {
 			height: $(window).height(),
 			width: $(window).width()
 		};
 
-		windowRatio = Math.floor(windowDimesions.width/windowDimesions.height*100)/100;
+		var windowRatio = Math.floor(windowDimesions.width/windowDimesions.height*100)/100;
+		var windowArea = windowDimesions.height * windowDimesions.width;
 
-		for (var i = 0, l = deviceSizes.length; i < l; i++) {
-			deviceSizes[i]._where.height._range.min = deviceSizes[i]._where.width._range.min / windowRatio;
-			deviceSizes[i]._where.height._range.max = deviceSizes[i]._where.width._range.max / windowRatio;
-		}
-
-		var size = _.compare.where(windowDimesions, deviceSizes);
-		var ratio = _.compare.range(windowRatio, deviceRatios, {roundTo: 4});
+		var size = _.compare.range(windowArea, deviceAreas);
+		var ratio = _.compare.range(windowRatio, deviceRatios, {roundTo: 3});
 
 		var device = {};
 		device = _.extend(device, size);
 		device = _.extend(device, ratio);
-
-		$html.removeClass("extrasmall small normal large extralarge");
-		$html.removeClass("extralong long portrait landscape wide extrawide");
-		$html.addClass(device.size);
-		$html.addClass(device.ratio);
 
 		_.extend(window, device);
 

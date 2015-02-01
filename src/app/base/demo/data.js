@@ -1,4 +1,4 @@
-define(['app/base/js/data'], function() {	
+define(['app/base/js/base', 'app/base/js/data'], function(base) {	
 	
 	base.on("data:ready", function() {
 			

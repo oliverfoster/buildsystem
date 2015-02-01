@@ -1,4 +1,4 @@
-define(['./base'], function() {
+define(['./base', './doc'], function(base, doc) {
 
 	base.trigger("base:addTaskToReadyQueue", behaviourReady);
 
@@ -107,15 +107,15 @@ define(['./base'], function() {
 		draw: function() {
 			this.undelegateEvents();
 			if (this._preRender) this._preRender();
-			this.trigger("preRendered");
-			base.trigger("behaviour:preRendered", this);
+			this.trigger("rendering");
+			base.trigger("behaviour:rendering", this);
 			this.render();
-			this.trigger("rendered");
-			base.trigger("behaviour:rendered", this);
+			this.trigger("render");
+			base.trigger("behaviour:render", this);
 			this._isRendered = true;
 			if (this._postRender) this._postRender();
-			this.trigger("postRendered");
-			base.trigger("behaviour:postRendered", this);
+			this.trigger("rendered");
+			base.trigger("behaviour:rendered", this);
 		},
 
 		render: function() {
@@ -144,7 +144,7 @@ define(['./base'], function() {
 
 	});
 
-	document.behaviours = {};
-	document.behaviours.Default = Default;
+	doc.behaviours = {};
+	doc.behaviours.Default = Default;
 
 });

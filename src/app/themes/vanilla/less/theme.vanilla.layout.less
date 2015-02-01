@@ -1,3 +1,44 @@
-.layout-vanilla {
-	
+@wrapper-padding:24px;
+
+.size-vanilla {
+	#datamapview-content {
+		width: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		height:100%;
+	}
+	#wrapper { 
+		overflow-y: scroll;
+		overflow-x: hidden;
+		position:absolute;
+		top:0px;
+		left:0px;
+		right:0px;
+		bottom:0px;
+		padding: @wrapper-padding;
+	}
+	#prewrapper, #postwrapper {
+		position:absolute;
+	}
+}
+
+.long, .portrait, .landscape, .wide, .extrawide {
+	.size-vanilla {
+		#prewrapper {
+			width: 100%;
+			top: 0px;
+			left: 0px;
+		}
+	}
+}
+
+.extralong {
+	.size-vanilla {
+		#prewrapper {
+			height: 100%;
+			top: 0px;
+			left: 0px;
+		}
+	}
 }

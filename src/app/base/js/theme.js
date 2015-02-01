@@ -1,4 +1,4 @@
-define(["./base"], function() {
+define(["./base"], function(base) {
 
 	base.on("change:config.themes change:config.themes.current", loadTheme);
 	base.on("data:ready", loadTheme);

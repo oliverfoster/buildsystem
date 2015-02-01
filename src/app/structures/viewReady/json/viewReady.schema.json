@@ -14,12 +14,12 @@
 						"_complete": "Boolean"
 					},
 					"ReadyOn": [
-						"dropzonesPostRendered",
+						"dropzones:rendered",
 						"ready"
 					]
 				},
 				"_default": {
-					"_on": "dropzonesPostRendered",
+					"_on": "dropzones:rendered",
 					"_complete": false
 				}
 			}

@@ -737,7 +737,9 @@ function handlebars(options){
 				//.pipe(remember(sectionName+'handlebars'+(options.config||"")))
 
 				.pipe(gulpif(isDebug, htmlhint({
-					"doctype-first":false
+					"doctype-first":false,
+					"spec-char-escape": false,
+					"tag-pair":false
 				})))
     			.pipe(gulpif(isDebug, htmlhint.reporter()))
     			

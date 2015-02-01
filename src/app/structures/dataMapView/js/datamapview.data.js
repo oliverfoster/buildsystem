@@ -1,4 +1,4 @@
-define(['app/base/js/data'], function() {	
+define(['app/base/js/base', 'app/base/js/data'], function(base) {	
 	
 	base.once("data:ready", convertToPageMenuComponentData);
 
@@ -152,6 +152,8 @@ define(['app/base/js/data'], function() {
 
 		_.extend(base, raw);
 		base.sync("push");
+
+		base.trigger("data:processed");
 
 	}
 

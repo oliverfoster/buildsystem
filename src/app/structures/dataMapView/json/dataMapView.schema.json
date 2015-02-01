@@ -38,7 +38,7 @@
 				"_required": false,
 				"_type": "Enum[Behaviour]",
 				"_enum": {
-					"Behaviour": "document.templates"
+					"Behaviour": "base.document.templates"
 				}
 			},
 			"_attributes": {
@@ -156,7 +156,7 @@
 				"_required": true,
 				"_type": "Enum[Behaviour]",
 				"_enum": {
-					"Behaviour": "document.behaviours"
+					"Behaviour": "base.document.behaviours"
 				}
 			},
 			"_language": {

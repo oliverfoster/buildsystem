@@ -1,4 +1,4 @@
-define(['app/base/js/router'], function() {
+define(['app/base/js/base', 'app/base/js/router'], function(base) {
 
 	base.on("router:route:app", function() {
 		

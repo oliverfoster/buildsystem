@@ -1,0 +1,15 @@
+[
+	{
+		"_id": "overlay",
+		"_type": "extension",
+		"_tier": "view",
+		"_behaviour": "DataMapView",
+		"_template": "overlay",
+		"_tagName": "div",
+		"_dropzones": {
+			"headers": true,
+			"contents": true,
+			"footers": true
+		}
+	}
+]

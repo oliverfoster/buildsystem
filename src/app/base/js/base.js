@@ -4,7 +4,7 @@ define(function() {
 		size: "undefined",
 		ratio: "undefined"
 	};
-	var base = window.base = new Stemo(defaultBaseValues);
+	var base = new Stemo(defaultBaseValues);
 	
 	var readyQueue = (new Backbone.Waiter.Queue());
 	readyQueue.once("ready", queueReady);
@@ -36,10 +36,21 @@ define(function() {
 	
 	$(window).resize(fetchWindowSizeToEventSystem);
 
+	var $html = $("html");
+
 	function fetchWindowSizeToEventSystem() {
-		window.base.size = window.size;
-		window.base.ratio = window.ratio;
+		base.size = window.size;
+		base.ratio = window.ratio;		
 	}
+
+	function applyCSSStyles() {
+		$html.removeClass("extrasmall small normal large extralarge");
+		$html.removeClass("extralong long portrait landscape wide extrawide");
+		$html.addClass(base.size);
+		$html.addClass(base.ratio);
+	}
+
+	base.on("change:size change:ratio", applyCSSStyles);
 
 	fetchWindowSizeToEventSystem();
 

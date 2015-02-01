@@ -1,4 +1,4 @@
-define(['app/base/js/behaviour'], function() {
+define(['app/base/js/base', 'app/base/js/behaviour'], function(base) {
 
 	var Default = base.behaviour.get("Default");
 	

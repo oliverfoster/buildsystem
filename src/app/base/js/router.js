@@ -1,10 +1,10 @@
-define(['./base'], function() {
+define(['./base'], function(base) {
 
 	base.trigger("base:addTaskToReadyQueue", routerReady);
 
 	function routerReady(task) {
 		
-		base.trigger("router:ready", base.router);
+		base.trigger("router:started", base.router);
 		task.ready();
 
 	}

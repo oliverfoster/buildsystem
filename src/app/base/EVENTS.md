@@ -4,7 +4,7 @@ base {
 	< ! base:addTaskToReadyQueue( callback(Waiter.Task) );
 
 	> ~ data:ready(base)
-	> ~ router:ready()
+	> ~ router:started()
 	> ~ registry:ready()
 	> ~ behaviour:ready()
 	> ~ document:started()
@@ -18,12 +18,12 @@ base {
 	< ! document:new()
 	< ! document:clear()
 	> ~ document:cleared()
-	> ! document:ended()
+	> ! document:finished()
 
 	> ! behaviour:initialized(view);
-	> ! behaviour:preRendered(view);
+	> ! behaviour:rendering(view);
+	> ! behaviour:render(view);
 	> ! behaviour:rendered(view);
-	> ! behaviour:postRendered(view);
 	> ! behaviour:removed(view);
 	
 }
@@ -31,8 +31,8 @@ base {
 
 Default behaviour {
 	> ! initialized()
-	> ! preRendered()
+	> ! rendering()
+	> ! render()
 	> ! rendered()
-	> ! postRendered()
 	> ! removed()
 }

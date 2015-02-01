@@ -11,6 +11,17 @@
 		}
 	},
 	{
+		"_id": "topbarHomeButton",
+		"_type": "component",
+		"_tier": "data",
+		"_language": {
+			"en": {
+				"text": "Home",
+				"_icon": "fa fa-home"
+			}
+		}
+	},
+	{
 		"_id": "topbarDrawerButton",
 		"_type": "component",
 		"_tier": "data",

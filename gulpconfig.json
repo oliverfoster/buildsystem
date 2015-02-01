@@ -4,21 +4,21 @@
 		"path": "src/configs/{{config}}",
 		"javascript": {
 			"core":[
-				"src/core/**/js/*.js",
-				"src/core/**/libraries/*.js",
+				"src/core/**/js/**/*.js",
+				"src/core/**/libraries/**/*.js",
 				"!src/core/**/assets/**/*.js"
 			],
 			"app": [
 				"src/app/app.js",
-				"src/app/**/js/*.js",
-				"src/app/**/libraries/*.js",
+				"src/app/**/js/**/*.js",
+				"src/app/**/libraries/**/*.js",
 				"!src/app/**/assets/**/*.js"
 			]
 		},
 		"json": [
-			"src/core/**/json/*.json",
+			"src/core/**/json/**/*.json",
 			"!src/core/**/assets/**/*.json",
-			"src/app/**/json/*.json",
+			"src/app/**/json/**/*.json",
 			"!src/app/**/assets/**/*.json",
 			"src/configs/{{config}}/**/*.json",
 			"!src/configs/{{config}}/**/assets/**/*.json"
@@ -35,9 +35,9 @@
 			"!src/configs/{{config}}/**/assets/**/*.less"
 		],
 		"handlebars": [
-			"src/core/**/templates/*.hbs",
+			"src/core/**/templates/**/*.hbs",
 			"!src/core/**/assets/**/*.hbs",
-			"src/app/**/templates/*.hbs",
+			"src/app/**/templates/**/*.hbs",
 			"!src/app/**/assets/**/*.hbs",
 			"src/configs/{{config}}/**/*.hbs",
 			"!src/configs/{{config}}/**/assets/**/*.hbs"
@@ -140,7 +140,8 @@
 		        	"velocity",
 		        	"onscreen",
 		        	"scrollTo",
-		        	"imageready"
+		        	"imageready",
+		        	"draggabilly"
 				]
 			}
 		}
@@ -197,7 +198,8 @@
 	        "underscore": "core/libraries/underscore",
 	        "compare": "core/libraries/underscore.compare",
 	        "size": "core/libraries/underscore.compare.window.size",
-	        "velocity": "core/libraries/velocity"
+	        "velocity": "core/libraries/velocity",
+		    "draggabilly": "core/libraries/draggabilly"
 	    }
     }
 }

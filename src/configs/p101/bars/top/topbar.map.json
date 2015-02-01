@@ -1,7 +1,7 @@
 [
 	{
 		"_id": "main-menu-top-bar",
-		"_type": "bar",
+		"_type": "extension",
 		"_tier": "map",
 		"_viewId": "bar",
 		"_classes": "top",
@@ -13,17 +13,19 @@
 					"_tier": "map",
 					"_dataId": "topbarBackButton",
 					"_viewId": "barIcon",
-					"_eventName": "backButton"
+					"_triggers": [{"name":"bar:back","on":"base"}]
+				},
+				{
+					"_id": "topbarHomeButton",
+					"_type": "component",
+					"_tier": "map",
+					"_dataId": "topbarHomeButton",
+					"_viewId": "barIcon",
+					"_triggers": [{"name":"bar:home","on":"base"}]
 				}
 			],
 			"center": [
-				{
-					"_id": "topbarTitle",
-					"_type": "component",
-					"_tier": "map",
-					"_dataId": "topbarTitle",
-					"_viewId": "barText"
-				}
+				
 			],
 			"right": [
 				{
@@ -32,7 +34,7 @@
 					"_tier": "map",
 					"_dataId": "topbarDrawerButton",
 					"_viewId": "barIcon",
-					"_eventName": "drawerButton"
+					"_triggers": [{"name":"bar:drawer","on":"base"}]
 				}
 			]
 		}
